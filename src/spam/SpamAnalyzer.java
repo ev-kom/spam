@@ -11,7 +11,9 @@ import java.util.*;
 /**
  * Created by EKomarov on 31.10.2016.
  */
+
 public class SpamAnalyzer implements SpamAnalyzerInterface {
+
 
     @Override
     public String[] readRules(String rulesFile, String delim) {   //Реализует считывание правил из файла. rulesFile - путь к файлу

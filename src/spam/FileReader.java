@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by EKomarov on 25.10.2016.
@@ -23,7 +24,7 @@ class FileReader implements FileReaderInterface {
 
             List<String> fileNames = new ArrayList<>();
         for (File file : listFiles) {   //Запись имён файлов в директории в список List
-                if (file.isFile()) {
+                if (file.isFile() && !Objects.equals(file.getName(), "rules.txt")) {
 //                System.out.println(file.getName());
                     fileNames.add(file.getName());
                 }
