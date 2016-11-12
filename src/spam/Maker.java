@@ -1,5 +1,8 @@
 package spam;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
@@ -9,7 +12,7 @@ import java.util.*;
 
 public class Maker {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         System.out.println(System.getProperty("user.home"));
         System.out.println(System.getProperty("os.name"));
 
@@ -17,6 +20,11 @@ public class Maker {
         System.out.println(directory); //Директория с проверяемыми файлами
         String rulesFile = Paths.get(System.getProperty("user.home"),"spamdir","rules.txt").toString(); //"D:\\java\\spamdir\\rules\\spam.txt";   //Путь к файлу с правилами
         String delim = ";";   //Разделитель (в файле с правилами)
+
+
+
+
+
         List fileNames = new ArrayList(); //Список названий файлов в директории
 
         FileReaderInterface fileReader;
