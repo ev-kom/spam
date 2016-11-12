@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import spam.MyProperties;
 
 /**
  * Created by EKomarov on 25.10.2016.
@@ -19,7 +20,7 @@ public class Maker {
         String directory = Paths.get(System.getProperty("user.home"),"spamdir").toString();
         System.out.println(directory); //Директория с проверяемыми файлами
         String rulesFile = Paths.get(System.getProperty("user.home"),"spamdir","rules.txt").toString(); //"D:\\java\\spamdir\\rules\\spam.txt";   //Путь к файлу с правилами
-        String delim = ";";   //Разделитель (в файле с правилами)
+        String delim = String.valueOf(MyProperties.getProperties().getProperty("delim"));   //Разделитель (в файле с правилами)
 
 
 
