@@ -19,12 +19,8 @@ public class Maker {
 
         String directory = Paths.get(System.getProperty("user.home"),"spamdir").toString();
         System.out.println(directory); //Директория с проверяемыми файлами
-        String rulesFile = Paths.get(System.getProperty("user.home"),"spamdir","rules.txt").toString(); //"D:\\java\\spamdir\\rules\\spam.txt";   //Путь к файлу с правилами
+        String rulesFile = Paths.get(System.getProperty("user.home"),"spamdir","rules.txt").toString();  //Путь к файлу с правилами
         String delim = String.valueOf(MyProperties.getProperties().getProperty("delim"));   //Разделитель (в файле с правилами)
-
-
-
-
 
         List fileNames = new ArrayList(); //Список названий файлов в директории
 
