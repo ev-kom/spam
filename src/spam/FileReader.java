@@ -10,7 +10,7 @@ import java.util.*;
  * Created by EKomarov on 25.10.2016.
  */
 
-class FileReader implements FileReaderInterface<String> {
+class FileReader implements FileReaderInterface<String,String> {
     
     public List<String> listOfFiles(String directory){
         File dir = new File(directory);

@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * Created by EKomarov on 02.11.2016.
  */
-public class Visualization implements VisualizationInterface <String> {
+public class Visualization implements VisualizationInterface <String,String> {
 
     @Override
     public String[][] convertData(Map<String,String> spamResult) {

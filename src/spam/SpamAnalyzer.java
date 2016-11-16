@@ -12,7 +12,7 @@ import java.util.*;
  * Created by EKomarov on 31.10.2016.
  */
 
-public class SpamAnalyzer implements SpamAnalyzerInterface <String> {
+public class SpamAnalyzer implements SpamAnalyzerInterface <String,String> {
 
 
     @Override

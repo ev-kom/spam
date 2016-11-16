@@ -19,9 +19,9 @@ public class Maker {
         String rulesFile = Paths.get(System.getProperty("user.home"),"spamdir","rules.txt").toString();  //Путь к файлу с правилами
         String delim = String.valueOf(MyProperties.getProperties().getProperty("delim"));   //Разделитель (в файле с правилами)
 
-        List<String> fileNames = new ArrayList<>(); //Список названий файлов в директории
+        List<String> fileNames; //Список названий файлов в директории
 
-        FileReaderInterface<String> fileReader;
+        FileReaderInterface<String,String> fileReader;
         fileReader = new FileReader();
 
         fileNames = fileReader.listOfFiles(directory);  //Получаем список файлов в директории
@@ -29,13 +29,13 @@ public class Maker {
         Map<String,String> files = fileReader.filesReader(fileNames,directory);     //Записываем в HashMap ключ - имя файла, значение - содержание файла
         System.out.println(files);
 
-        SpamAnalyzerInterface<String> spamAnalyzer;
+        SpamAnalyzerInterface<String,String> spamAnalyzer;
         spamAnalyzer = new SpamAnalyzer();
         System.out.println(Arrays.toString(spamAnalyzer.readRules(rulesFile, delim)));  //Считываем файл с правилами
         Map<String,String> spamResult = spamAnalyzer.checkFile(spamAnalyzer.readRules(rulesFile,delim),files);  //Возвращаем HashMap ключ - имя файл, значение - Спам/неСпам
         System.out.println(spamResult);
 
-        VisualizationInterface<String> visualization;
+        VisualizationInterface<String,String> visualization;
         visualization = new Visualization();
         visualization.tableShow(visualization.convertData(spamResult));  //Конвертируем HashMap в двумерный массив и показываем
 

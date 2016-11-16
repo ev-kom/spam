@@ -9,7 +9,7 @@ import java.util.Map;
  * Created by EKomarov on 25.10.2016.
  */
 
-public interface SpamAnalyzerInterface <S> {
+public interface SpamAnalyzerInterface <S,M> {
     S[] readRules(S rulesFile, S delim);
-    Map<S,S> checkFile(S[] rules, Map<S,S> files);
+    Map<S,M> checkFile(S[] rules, Map<S,M> files);
 }
