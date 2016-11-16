@@ -8,10 +8,10 @@ import java.util.*;
 /**
  * Created by EKomarov on 02.11.2016.
  */
-public class Visualization implements VisualizationInterface {
+public class Visualization implements VisualizationInterface <String> {
 
     @Override
-    public String[][] convertData(HashMap<String,String> spamResult) {
+    public String[][] convertData(Map<String,String> spamResult) {
         String[][] tableData = new String[spamResult.size()][2];
 
         int i = 0;

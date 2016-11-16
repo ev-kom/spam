@@ -12,7 +12,7 @@ import java.util.*;
  * Created by EKomarov on 31.10.2016.
  */
 
-public class SpamAnalyzer implements SpamAnalyzerInterface {
+public class SpamAnalyzer implements SpamAnalyzerInterface <String> {
 
 
     @Override
@@ -24,7 +24,7 @@ public class SpamAnalyzer implements SpamAnalyzerInterface {
         StringBuilder sb = new StringBuilder();
         try {       //Считывание правил из файла с помощью Files.newBufferedReader, запись в массив строк
             Path path = Paths.get(rulesFile);
-            BufferedReader br = Files.newBufferedReader(path);    //Считывает файл построчно, и записывает в файл
+            BufferedReader br = Files.newBufferedReader(path);    //Считывает файл построчно
             while((spamRules = br.readLine()) != null) sb.append(spamRules);
             spamRules = sb.toString();
             br.close();
@@ -36,13 +36,13 @@ public class SpamAnalyzer implements SpamAnalyzerInterface {
     }
 
     @Override
-    public HashMap<String,String> checkFile(String[] rules, HashMap<String,String> files) {
+    public Map<String,String> checkFile(String[] rules, Map<String,String> files) {
         boolean flag = false;
         for (Map.Entry<String,String> entry : files.entrySet()){    //Перезапись значений HashMap files на true/false
             flag = false;
 //            System.out.println(entry.getKey() + "/" + entry.getValue());
             for (String ruleText : rules)
-                if (entry.getValue().contains(ruleText)){ entry.setValue("true"); flag = true; break; } //flag = true при выполнении условия в файле спам
+                if (entry.getValue().contains(ruleText)) { entry.setValue("true"); flag = true; break; } //flag = true при выполнении условия в файле спам
                 if (!flag) entry.setValue("false");     //Если не одно условие не нашлось в строке, то flag = false и в файлне не спам
             }
         return files;
