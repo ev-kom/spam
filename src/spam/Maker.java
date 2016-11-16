@@ -1,7 +1,7 @@
 package spam;
 
 import java.io.FileNotFoundException;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.*;
 
 /**
@@ -40,7 +40,7 @@ public class Maker {
         visualization.tableShow(visualization.convertData(spamResult));  //Конвертируем HashMap в двумерный массив и показываем
 
 
-        }
+    }
     }
 
 
