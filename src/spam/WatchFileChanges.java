@@ -32,10 +32,11 @@ public class WatchFileChanges {
                 System.out.println(kind.name() + ": " + fileName);
 
                 if (kind == OVERFLOW){
-                    break;
+                    continue;
                 } else if (kind == ENTRY_CREATE){
                     System.out.println("File was created");
-                    System.out.println(fileName);
+                    FileReader test = new FileReader();
+                    System.out.println(test.addFileToList(test.listOfFiles(directory),directory, String.valueOf(fileName)));
                 } else if (kind == ENTRY_DELETE){
                     System.out.println("File was deleted");
                 } else if (kind == ENTRY_MODIFY){

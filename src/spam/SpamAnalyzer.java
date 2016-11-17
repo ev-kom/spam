@@ -38,7 +38,7 @@ public class SpamAnalyzer implements SpamAnalyzerInterface <String,String> {
     @Override
     public Map<String,String> checkFile(String[] rules, Map<String,String> files) {
         boolean flag = false;
-        for (Map.Entry<String,String> entry : files.entrySet()){    //Перезапись значений HashMap files на true/false
+        for (Map.Entry<String,String> entry : files.entrySet()){    //Цикл для перезапись значений HashMap files на true/false
             flag = false;
 //            System.out.println(entry.getKey() + "/" + entry.getValue());
             for (String ruleText : rules)
@@ -47,6 +47,15 @@ public class SpamAnalyzer implements SpamAnalyzerInterface <String,String> {
             }
         return files;
         }
+
+    public Map<String,String> checkNewFile(String[] rules, Map<String,String> files, String fileName) {
+
+        for (String ruleText : rules)
+            if (files.get(fileName).contains(ruleText)) files.put(fileName,"true");
+        files.put(fileName,"false");
+
+        return files;
+    }
 
     }
 
