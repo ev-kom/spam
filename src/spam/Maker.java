@@ -1,6 +1,7 @@
 package spam;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
 
@@ -38,6 +39,13 @@ public class Maker {
         VisualizationInterface<String,String> visualization;
         visualization = new Visualization();
         visualization.tableShow(visualization.convertData(spamResult));  //Конвертируем HashMap в двумерный массив и показываем
+
+        WatchFileChanges watcher = new WatchFileChanges();
+        try {
+            watcher.watchService(directory);
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
     }

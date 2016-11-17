@@ -35,7 +35,7 @@ public class Visualization implements VisualizationInterface <String,String> {
         String[] tableNames = {"File Name", "Spam Status"};
         JFrame frame = new JFrame("Spam table");
         JTable spamTable = new JTable(tableData, tableNames);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         JScrollPane scrollPane = new JScrollPane(spamTable);
 

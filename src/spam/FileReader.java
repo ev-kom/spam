@@ -46,5 +46,29 @@ class FileReader implements FileReaderInterface<String,String> {
         return filesData;
     }
 
+    public List<String> addFileToList(List<String> fileNames, String directory, String fileName){
+        File fileDir = new File(directory,fileName);
+        if (!fileDir.exists()) System.exit(0);
+
+            if (fileDir.isFile() && !Objects.equals(fileDir.getName(), "rules.txt")) {
+//                System.out.println(file.getName());
+                fileNames.add(fileDir.getName());
+            }
+        return fileNames;
+    }
+
+    public Map<String,String> newFileReader(Map<String,String> files, String directory, String fileName) {
+        if (files == null) return null;
+
+            try {
+                files.put(fileName, new String(Files.readAllBytes(Paths.get(directory, fileName))));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        return files;
+        }
+
+
+
 
 }
