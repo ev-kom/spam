@@ -25,12 +25,12 @@ class FileReader implements FileReaderInterface<String,String> {
 
         for (File file: listFiles) {   //Запись имён файлов в директории в список List
             dirState = MyState.addFilesState(i,j,file,dirState);
-            if (file.isFile() && !Objects.equals(file.getName(), "rules.txt"))  fileNames.add(file.getName());
+            if (file.isFile() && !Objects.equals(file.getName(), "rules.txt")
+                              && !Objects.equals(file.getName(), "last_state.txt"))  fileNames.add(file.getName());
             i++;
         }
 
         MyState.writeStateFile(dirState);
-        System.out.println(Arrays.deepToString(dirState));
         return fileNames;
     }
 
@@ -56,7 +56,8 @@ class FileReader implements FileReaderInterface<String,String> {
         File fileDir = new File(directory,fileName);
         if (!fileDir.exists()) System.exit(0);
 
-            if (fileDir.isFile() && !Objects.equals(fileDir.getName(), "rules.txt")) {
+            if (fileDir.isFile() && !Objects.equals(fileDir.getName(), "rules.txt")
+                                 && !Objects.equals(fileDir.getName(), "last_state.txt")) {
 //                System.out.println(file.getName());
                 fileNames.add(fileDir.getName());
             }

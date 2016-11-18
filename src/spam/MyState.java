@@ -20,7 +20,7 @@ public class MyState {
 
     public static void writeStateFile(String[][] dirState){
         try {
-            PrintWriter writer = new PrintWriter(String.valueOf(Paths.get(System.getProperty("user.home"), "spamdir", "last_state.txt")));
+            PrintWriter writer = new PrintWriter(String.valueOf(Paths.get(System.getProperty("user.home"), "spamdir", "mySpam", "last_state.txt")));
             for (String[] str : dirState){
                 writer.println(Arrays.toString(str));
             }
