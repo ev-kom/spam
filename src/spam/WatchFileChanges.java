@@ -1,8 +1,9 @@
 package spam;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
+import java.util.List;
+import java.util.Map;
 
 import static java.nio.file.StandardWatchEventKinds.*;
 
@@ -12,6 +13,10 @@ import static java.nio.file.StandardWatchEventKinds.*;
 public class WatchFileChanges {
 
     public void watchService(String directory) throws IOException, InterruptedException {
+
+        FileReader test = new FileReader();
+        List<String> testList = test.firstStartList(directory);
+        Map<String,String> testMap = test.filesReader(testList, directory);
 
         WatchService watcher = FileSystems.getDefault().newWatchService();
         Path dir = Paths.get(directory);
@@ -35,8 +40,8 @@ public class WatchFileChanges {
                     continue;
                 } else if (kind == ENTRY_CREATE){
                     System.out.println("File was created");
-                    FileReader test = new FileReader();
-                    System.out.println(test.addFileToList(test.listOfFiles(directory),directory, String.valueOf(fileName)));
+                    System.out.println(test.addFileToList(testList,directory, String.valueOf(fileName)));
+                    System.out.println(test.newFileReader(testMap,directory, String.valueOf(fileName)));
                 } else if (kind == ENTRY_DELETE){
                     System.out.println("File was deleted");
                 } else if (kind == ENTRY_MODIFY){

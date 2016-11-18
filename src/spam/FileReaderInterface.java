@@ -6,6 +6,6 @@ import java.util.*;
  */
 
 public interface FileReaderInterface <S,M> {
-    List<S> listOfFiles(S directory);
+    List<S> firstStartList(S directory);
     Map<S,M> filesReader(List<S> fileNames, S directory);
 }

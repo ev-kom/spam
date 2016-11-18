@@ -25,7 +25,7 @@ public class Maker {
         FileReaderInterface<String,String> fileReader;
         fileReader = new FileReader();
 
-        fileNames = fileReader.listOfFiles(directory);  //Получаем список файлов в директории
+        fileNames = fileReader.firstStartList(directory);  //Получаем список файлов в директории
         System.out.println(fileNames);
         Map<String,String> files = fileReader.filesReader(fileNames,directory);     //Записываем в HashMap ключ - имя файла, значение - содержание файла
         System.out.println(files);
