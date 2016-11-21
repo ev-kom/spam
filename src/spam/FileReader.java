@@ -16,7 +16,7 @@ class FileReader implements FileReaderInterface<String,String> {
         File dir = new File(directory);
         if (!dir.exists()) System.exit(0);
 
-        File[] listFiles = dir.listFiles();
+        File[] listFiles = dir.listFiles(File::isFile);
         if (listFiles == null) return null;
         int i = 0;
         int j = listFiles.length;
@@ -24,9 +24,10 @@ class FileReader implements FileReaderInterface<String,String> {
         List<String> fileNames = new ArrayList<String>();
 
         for (File file: listFiles) {   //Запись имён файлов в директории в список List
-            dirState = MyState.addFilesState(i,j,file,dirState);
-            if (file.isFile() && !Objects.equals(file.getName(), "rules.txt")
-                              && !Objects.equals(file.getName(), "last_state.txt"))  fileNames.add(file.getName());
+            if (file.isFile()){
+                dirState = MyState.addFilesState(i,j,file,dirState);
+                fileNames.add(file.getName());
+            }
             i++;
         }
 

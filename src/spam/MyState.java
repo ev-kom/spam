@@ -1,8 +1,8 @@
 package spam;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
@@ -28,4 +28,25 @@ public class MyState {
         } catch (FileNotFoundException e) {e.printStackTrace();
         }
     }
+/*
+    public void readState(){
+        String stateDir = String.valueOf(Paths.get(System.getProperty("user.home"), "spamdir", "MySpam", "last_state.txt"));
+        File state = new File(stateDir);
+        if (!state.exists()){ System.out.println("Last state was not found"); System.exit(0);} //Дописать первый запуск при отсутствии файла с состоянием
+
+        String spamRules = null;
+        StringBuilder sb = new StringBuilder();
+        try {       //Считывание правил из файла с помощью Files.newBufferedReader, запись в массив строк
+            Path path = Paths.get(stateDir);
+            BufferedReader br = Files.newBufferedReader(path);    //Считывает файл построчно
+            while((spamRules = br.readLine()) != null) sb.append(spamRules);
+            spamRules = sb.toString();
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return spamRules != null ? spamRules.split(delim) : new String[0];
+    }
+*/
 }
