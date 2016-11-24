@@ -4,6 +4,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -28,25 +29,37 @@ public class MyState {
         } catch (FileNotFoundException e) {e.printStackTrace();
         }
     }
-/*
-    public void readState(){
-        String stateDir = String.valueOf(Paths.get(System.getProperty("user.home"), "spamdir", "MySpam", "last_state.txt"));
+
+    public static void readState(){
+        String stateDir = String.valueOf(Paths.get(System.getProperty("user.home"), "spamdir", "mySpam", "last_state.txt"));
         File state = new File(stateDir);
         if (!state.exists()){ System.out.println("Last state was not found"); System.exit(0);} //Дописать первый запуск при отсутствии файла с состоянием
 
-        String spamRules = null;
-        StringBuilder sb = new StringBuilder();
+        String lastState = null;
+        ArrayList<String[]> sb = new ArrayList<>();
         try {       //Считывание правил из файла с помощью Files.newBufferedReader, запись в массив строк
+
             Path path = Paths.get(stateDir);
             BufferedReader br = Files.newBufferedReader(path);    //Считывает файл построчно
-            while((spamRules = br.readLine()) != null) sb.append(spamRules);
-            spamRules = sb.toString();
+            while((lastState = br.readLine()) != null) {
+                lastState = lastState.replaceAll("\\s+|\\[|\\]","");
+                System.out.println(Arrays.toString(lastState.split(",")));
+                sb.add(lastState.split(",|\\[|\\]"));
+            }
             br.close();
+
+            String[][] myState = new String [sb.size()][];
+            for (int i = 0;  i < sb.size(); i++){
+                String[] row = sb.get(i);
+                myState[i] = row;
+            }
+            System.out.println(Arrays.deepToString(myState));
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return spamRules != null ? spamRules.split(delim) : new String[0];
     }
-*/
+
 }

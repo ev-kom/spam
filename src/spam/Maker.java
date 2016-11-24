@@ -40,6 +40,8 @@ public class Maker {
         visualization = new Visualization();
         visualization.tableShow(visualization.convertData(spamResult));  //Конвертируем HashMap в двумерный массив и показываем
 
+        MyState.readState();
+
         WatchFileChanges watcher = new WatchFileChanges();
         try {
             watcher.watchService(directory);
